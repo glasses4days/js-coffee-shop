@@ -39,7 +39,7 @@
             </tr>
         </table>
 
-        <h4>Total: <span id="revenue"><!-- Revenue Message will show up here --></span></h4>
+        <h4>Total: <span id="revenue">Revenue Message will show up here</span></h4>
     </div>
 </div>
 
@@ -47,10 +47,24 @@
 
     // Set these variables to their DOM elements
 
-    var myImage;
-    var myRevenueMessage;
-
+    var myImage = document.getElementById('coffee-image');
+    // getting the image by id
+    myImage.setAttribute('src', 'static/coffee_beans.jpg');
+    // setting image 
+    var myRevenueMessage = document.getElementById('revenue');
+    // creating revenue message
+    var makeCoffee = function(){
+        // creating sunction that start when page loads
+        myImage.setAttribute('src', 'static/coffee_machine.jpg');
+        // sets image to coffeee machine
+        setTimeout(function(){myImage.setAttribute('src', 'static/coffee_mug.jpg');}, 1000);
+        // changes image to coffeee mug after 1000ms
+        setTimeout(function(){myImage.setAttribute('src', 'static/coffee_beans.jpg');}, 2500);
+    // starts another image chance at the same time as the first but delayed by the original 1000ms
+    };
     // use this JavaScript object in further study step
+    myImage.addEventListener('click', makeCoffee);
+    // tells when we click on image to call function
 
     var prices = {
         "brew": 2.05,
